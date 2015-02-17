@@ -1,0 +1,119 @@
+.player {
+  overflow: hidden;
+  opacity: 1;
+  height: 83%;
+  width: 95%;
+  margin: 25px auto;
+  
+  background: #edf0f2;
+  border-radius: 10px;
+  box-shadow: 
+    0 8px 10px 2px rgba(0,0,0,.1),
+    0 30px 15px -5px rgba(0,0,0,.05);
+}
+.art {
+  overflow: hidden;
+  height: 60%;
+  width: 100%;
+  
+  background: #DDD;
+  background-image: url('../images/avril.png');
+  opacity: 0.9;
+  background-size: cover;
+} 
+.info1 {
+  height: 20%;
+  margin-top: 15px;  
+  padding: 0 10%;
+}
+.info1 .title { 
+
+  width: 100%;
+  
+  font-size: 0.9em;
+  color: #48586b;
+  text-shadow: 0 1px #EFEFEF;
+}
+.info1 .song {
+  height: 50%;
+  display: block;
+  font-size: 0.6em;
+  color: #6a7888;
+}
+.info1 .progress {
+  -webkit-user-select: none;
+  cursor: pointer;
+  clear: both;
+  overflow: hidden;
+  position: relative;
+  top: 0px;
+  height: 4px;
+  width: 100%;
+  
+  background: #333;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 1px #DFDFDF;
+}
+.progress .progress-bar {
+  height: 100%;
+  width: 0%;
+  
+  background: #cdd2d7;
+  border-radius: 5px;
+}
+.controls {
+  position: relative;
+  margin: 0px 0 6.5% 0; 
+  padding: 0 10%;
+}
+.controls button {
+  cursor: pointer;
+  position: absolute;
+  height: 27px;
+  width: 27px;
+  border: none;
+  
+  text-align: center;  
+  background: #414141;
+  color: #d9d9d9;
+  border-radius: 50%;
+  font-size: 0.8em;
+  transition: .1s;
+  line-height: 1em;
+}
+.controls button:hover {
+  opacity: 0.95;
+}
+.controls button:active{
+  opacity: 0.5;
+}
+.controls .play {
+  height: 37px;
+  width: 37px;
+  
+  font-size: 1.2em;
+  line-height: 40px;
+}
+.controls .backward, .controls .forward {
+  top: .7em;
+  font-size: .5em;
+  letter-spacing: .4em;
+  line-height: .7em;
+}
+.controls .backward {
+  left: 25%;
+}
+.controls .forward {
+  left: 20%;  
+  letter-spacing: .3em;
+  text-align: right;
+}
+
+.controls .settings {
+  cursor: pointer;
+  color: #CCC;
+  float: right;
+  margin-top: 5%;
+}
+
+.controls .settings:hover { color: #AAA; }</style></head><body style="">

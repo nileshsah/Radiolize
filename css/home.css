@@ -1,0 +1,220 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url("../fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff") format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url("../fonts/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'monofurregular';
+    src: url('http://johnmotyljr.com/codepen/programming-fonts/monof55-webfont.eot');
+    src: url('http://johnmotyljr.com/codepen/programming-fonts/monof55-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/monof55-webfont.woff') format('woff'),
+         url('http://johnmotyljr.com/codepen/programming-fonts/monof55-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+*{margin:0;padding:0;}
+
+body{
+  background:#ddd;
+  font-family:'Open Sans',sans-serif;
+}
+
+}
+#slider {position:absolute;top:209px;left:0;width:100%;height:453px;overflow:hidden;z-index:1}
+.banner {position:absolute;top:87px;z-index:2;right:32px;color:#a0a0a0;width:350px}
+.items {display:none}
+.title {font-size:47px;line-height:1.2em;letter-spacing:-2px;display:block;padding-bottom:9px}
+.title .color2 {color:#000}
+.title span {display:block;margin-top:-17px}
+.banner .button1 {font-size:28px;padding:0 24px;height:49px;line-height:46px;margin-top:-1px;letter-spacing:-2px}
+.banner .button1:hover {background:#090909;color:#fff}
+
+.pagination {position:absolute;bottom:82px;right:274px;z-index:2}
+.pagination li {float:left;padding-left:3px}
+.pagination a {display:block;width:17px;height:17px;background:url(../images/buttons.png) right 0 no-repeat;text-indent:-9999px}
+.pagination a:hover, .pagination .current a {background-position:left}
+
+
+.button{
+  width:100px;
+  background:#3399cc;
+  display:block;
+  margin:0 auto;
+  margin-top:1%;
+  padding:10px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+}
+
+.button:hover{
+  background:#2288bb;
+}
+
+.info h1{
+  font-family:'Open Sans',sans-serif;
+  font-weight: 700;
+  font-size: 15pt;
+  color:#fff;
+  background: #19a0c5;
+  line-height: 80px;
+  margin: 0;
+  position: absolute; 
+  top: 0px; 
+  right: 0px;
+  
+  padding: 0px 15px;
+}
+
+.facebook {
+  width: 92%;
+  margin-top: 20px;
+  border:0;
+  padding:4%;
+  font-family:'Open Sans',sans-serif;
+  font-size:100%;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  display: inline-block;
+
+  background-color: #3b579d;
+}
+
+#login h3{
+font:normal normal 1.5em/0.0 'monofurregular', 'monaco', 'inconsolata', 'consolas';
+ color: red;
+ padding: 20px;
+ display: none;
+
+}
+
+.wrapper{
+
+	width: 95%;
+   display: block;
+	height: 495px;
+     margin: auto;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+
+#biz{
+
+	 -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+  display: table-cell;
+  float: left;
+  overflow:hidden;
+  background:#fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 72%;
+ 
+}
+
+#biz h1{
+ font:normal normal 2.8em/0.0 'monofurregular', 'monaco', 'inconsolata', 'consolas';
+ color: #a87b60;
+ padding: 0px 20px;
+}
+
+#biz h2{
+	
+	font:normal normal 1.2em/0.2 'monofurregular', 'monaco', 'inconsolata', 'consolas';
+	color: #fff;
+	padding:0 55px;
+}
+
+#tbody{
+
+  background: url("../images/bg (copy).jpg");
+  background-size: cover;
+	width: auto;
+	height: 85%;
+	overflow:hidden;
+
+}
+
+#login{
+  position: relative;
+  opacity: 0.95;
+  overflow:hidden;
+   -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+  margin-bottom: 15px;
+  height: 100%;
+  float: right;
+  width: 27%;
+}
+
+
+#login h1{
+	 -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+  background:#3399CC;
+  padding:20px 0;
+  font-size:100%;
+  font-weight:300;
+  text-align:center;
+  color:#fff;
+}
+
+form{
+	 -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+  height: 100%;
+  background: #ECF0F1;
+  padding:6% 4%;
+}
+
+input[type="input"],input[type="password"],cb{
+  width:100%;
+  background:#ECF0F1;
+  margin-bottom:4%;
+  border:1px solid #ccc;
+  padding:4%;
+  font-family:'Open Sans',sans-serif;
+  font-size:95%;
+  color:#555;
+}
+
+input[type="button"]{
+  width:100%;
+  margin-top: 20px;
+  background:#3399cc;
+  border:0;
+  padding:4%;
+  font-family:'Open Sans',sans-serif;
+  font-size:100%;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+}
+
+input[type="button"]:hover{
+  background:#2288bb;
+}

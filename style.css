@@ -1,0 +1,267 @@
+@font-face {
+  font-family: "FontAwesome";
+  src: url('fonts/fontawesome-webfont.eot');
+  src: url('fonts/fontawesome-webfont.eot?#iefix') format('eot'), 
+  	   url('fonts/fontawesome-webfont.woff') format('woff'), 
+  	   url('fonts/fontawesome-webfont.ttf') format('truetype'), 
+  	   url('fonts/fontawesome-webfont.svg#FontAwesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+	background-color: #333;
+}
+.ui-sortable {
+	width: 600px;
+	margin: 50px auto;
+	background-color: #ccc;
+	-webkit-box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, .1);
+    box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, .1);
+    list-style-type: none; 
+    padding: 0; 
+}
+.ui-sortable li.ui-state-default, .ui-sortable li { 
+	margin: 0; 
+	font-size: 1.0em; 
+	word-wrap: break-word;
+	color: #666;
+	outline: 0;
+	padding: 0;
+	margin: 0;
+	padding: 10px;
+	padding-right: 100px; !important
+	vertical-align: middle;
+	background: #f0f0f0;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#e5e5e5));
+	background: -moz-linear-gradient(top,  #f0f0f0,  #e5e5e5);
+	background: linear-gradient(top,  #f0f0f0,  #e5e5e5);
+
+	font-size: 1.1em;
+	position: relative;
+	cursor: pointer;
+}
+
+#sortable2{
+width: 97%;
+margin: 0px 10px 5px 10px;
+padding: 0px;
+
+}
+
+#sortable2 li h3{
+display: none;
+}
+
+#sortable2 li p, p a{
+color: #666;
+font-size: 0.875em; 
+padding: 0px 0px;
+margin: 0;
+}
+
+
+.ui-sortable li.ui-state-default:first-child {
+	border-top: 0; 
+}
+.ui-sortable li.ui-state-default:last-child {
+	border-bottom: 0;
+}
+
+.ui-sortable-placeholder {
+	border: 3px dashed #aaa;
+	height: 45px;
+	width: 344px;
+	background: #ccc;
+}
+
+
+
+#dashboard button{
+border: 0;
+background-color: transparent;
+}
+
+
+
+#user-playlist {
+  float: left;
+  padding: 0 .5em;
+  
+  width: 90%;
+  overflow: hidden;
+  background: #fcfcfc;
+  margin: .5em;
+  font: 1em sans-serif;
+  
+}
+
+#user-playlist h2{
+  margin: .75em 0 .55em 0;
+}
+
+#user-playlist ul {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+#user-playlist ul li {
+  position: relative;
+  min-height: 2em;
+  padding: .3em .3em .3em 1.5em;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.1s ease-in-out, height 0.25s ease-in-out;
+}
+#user-playlist ul li .button {
+  position: absolute;
+  left: 1.45em;
+  bottom: .35em;
+  opacity: 0;
+  height: 0;
+  width: 20%;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: .8em;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+}
+
+#user-playlist  #play{
+left: 25%;
+}
+
+#user-playlist  #delete{
+left: 47%;
+}
+
+#user-playlist ul li:before {
+  position: absolute;
+  top: .425em;
+  font-family: 'FontAwesome', sans-serif;
+  margin: 0 .35em 0 -1.35em;
+  vertical-align: bottom;
+}
+#user-playlist ul li:hover {
+  color: rgba(255, 255, 255, 0.8);
+  padding-left: 1.5em;
+}
+#user-playlist ul li:hover button {
+  opacity: 1;
+  height: 2em;
+}
+
+
+#user-playlist ul li:hover:before {
+  color: white;
+  right: 0;
+  -webkit-transform: scale(2.5, 2.5) translate(-0.25em, 0.15em);
+}
+#user-playlist ul li:hover:after {
+  position: absolute;
+  text-align: center;
+  content: attr(data-text);
+}
+
+.downloads li {
+  border-bottom: 0.15em solid rgba(0, 0, 0, 0.3);
+}
+.downloads li:before {
+
+  color: rgba(50, 50, 50, 0.5);
+}
+.downloads li:hover {
+  background: rgba(0, 140, 0, 0.7);
+  height: 4em;
+}
+.downloads li:hover:after {
+  text-align: center;
+  right: .35em;
+}
+.downloads li:hover:before {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+	  
+#create form{
+  background: none;
+  margin: 0 auto;
+  padding: 10px;
+
+}
+
+#create input {
+  display: inline-block;
+  font-size: 14px;
+  width:100%;
+  opacity: 0.5;
+  margin: 10px auto;
+  padding: 10px 8px 10px 8px;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0, .55), 0px 1px 1px rgba(255,255,255,.5);
+  border: 1px solid #666;
+}
+
+
+#create input:hover,
+input:focus {
+  opacity: .7;
+  color:#08c;
+  border: 1px solid #08c;
+   box-shadow: 0px 1px 0px rgba(255,255,255,.25),inset 0px 3px 6px rgba(0,0,0,.25);
+}
+
+#create input[type="text"]:focus {
+  box-shadow: inset 0 1px 2px rgba(255,255,255, .35), 0px 1px 15px rgba(0,246,255,.5);
+  border: 1px solid #08c;
+  width: 100%;
+  outline: none;
+}
+
+#playlist input[type="button"] {
+  appearance: none;
+  opacity: .99;
+  width:150px;
+  background: #08c;
+  box-shadow: inset 0 1px 2px rgba(255,255,255, .35), 0px 1px 6px rgba(0,246,255,.5);
+  border: 1px solid #0a5378;
+  border-radius: 4px;
+  color: #eee;
+  cursor: pointer;
+  text-shadow:0px -1px 0px rgba(0,0,0,.5);
+}
+
+#create input[type="button"]:hover {
+  background: #08c;
+  border: 1px solid #0a5378;
+  border-radius: 3px;
+  box-shadow: inset 0px 3px 16px rgba(0,0,0,.25),0px 1px 10px rgba(255,255,255,.5),inset 0px -1px 2px rgba(255,255,255,.35);
+  text-shadow:0px 1px 1px rgba(0,0,0,.65);
+  -webkit-transition: all 0.40s ease-out;
+  transition: all 0.40s ease-out;
+}
+
+.button-list{
+position: absolute;
+border:0;
+background-color: transparent;
+cursor: pointer;
+color: rgb(170, 170, 170);
+font-size: 16px;
+display:block;
+}
+
+.button-edit{
+top: 10px;
+right: 40px;
+}
+
+.button-delete{
+top: 10px;
+right: 10px;
+}
+
+.button-play{
+top: 10px;
+right: 70px;
+}
+
+
+

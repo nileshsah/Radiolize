@@ -1,0 +1,199 @@
+
+var loaded = "#dashboard";
+changeView();
+loaded = "#dashboard";
+
+var as;
+  audiojs.events.ready(function() {
+     as = audiojs.createAll();
+  });
+
+//$('.message').jScrollPane();
+
+var links = [];
+links[0] = "http://127.0.0.1/pyramid.mp3";
+$(function()
+    {
+        $('body').keypress(function(e)
+        {
+            code= (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) 
+			{
+			getData();
+            e.preventDefault();
+			}
+        });
+
+    });
+
+
+function getData()
+{
+ 
+ $('.message-list').empty();
+ $('.message-list').append('<div class="srch">Searching...</div>'); 
+ 			
+		
+var url='http://sanshray.org/new_get.php?song='+ $('.search').val()+'&pid=0';
+// var url='http://nellex.3owl.com/get.php?song='+ $('.search').val();
+ 
+ 
+ $.getJSON(url, function(data) { 
+	
+	$('.message-list').empty();
+	for( var i = 0; i < data.length; i++ )
+	{	 
+		if( data[i].data == null ) data[i].data = " ";
+		$('.message-list').append('<li class="" ><div class="preview"><h3>' + data[i].data.replace(/\<br \/\>/g, "  ") + '</h3><p><a target="_blank" duration='+data[i].dur+' href="'+ data[i].href +'">'+data[i].song+'</a></p></div> <button class="fa fa-pencil fa-fw button-edit button-list" ></button><button class="fa fa-trash-o fa-fw button-list button-delete" onclick="alert("del");"></button><button class="fa fa-play fa-fw button-play button-list" onclick=playaudio("'+encodeURIComponent(data[i].href) +'")></button></li>');
+		links[i] = data[i].href;
+	}
+ });
+	  
+}
+
+function playaudio( url )
+{
+	$('audio').attr('src', url);
+	as[0].load();
+	$('audio').remove();
+	$('.footer').empty();
+	$('.footer').append('<audio id="audioTag" preload="autoplay"><source src="'+ decodeURIComponent(url)+'" type="audio/mpeg"></audio>');
+	as = audiojs.createAll();
+	document.getElementById('player').style.bottom = '0px'
+}
+$(document).on('click', '.message-list li', function(e) {
+	e.preventDefault();
+	var song = $(this).closest("li").children("div").children("p").children("a").attr('href');
+	playaudio( encodeURIComponent(song) );
+});
+
+$(document).on('click', '#sortable2 li', function(e) {
+	e.preventDefault();
+});
+
+$(document).on('click', '#sortable2 li .button-edit', function(e) {
+	var song = $(this).closest("li").children("div").children("p").children("a").html();
+	var input = prompt(" Edit: "+song, song);
+			
+			if( input != null)
+			  $(this).closest("li").children("div").children("p").children("a").html(input);
+});
+
+$(document).on('click', '#sortable2 li .button-delete', function(e) {		 
+	
+		$(this).closest("li").remove();
+		if( $("ul#sortable2 li").length == 0) 
+			{  $('#sortable2').append('<li id="nothing" class="ui-state-default">Drop Songs Here</li>'); }
+		
+});
+	
+function refresh() {  
+
+	var copyHelper= null;
+     $( "#sortable1" ).sortable({
+
+      connectWith: "#sortable2",
+      forcePlaceholderSize: true,
+      helper: function(e,li) {
+				copyHelper= li.clone().insertAfter(li);
+				return li.clone();
+			},
+	 placeholder: 'myPlaceholder',
+			stop: function() {
+				copyHelper && copyHelper.remove();
+			}
+    }).disableSelection();
+    
+    
+    	$("#sortable2").sortable({
+			receive: function(e,ui) {
+			document.getElementById("nothing").remove(); 
+				copyHelper= null;
+			},
+
+		}).disableSelection();
+
+	}
+
+ 
+$(function () { 
+	
+$(window).hashchange( function(e){
+		if( location.hash != '#edit')			
+			changeView();
+       
+	});
+});
+
+function changeView()
+{
+//alert(loaded);
+    if(location.hash == '#dashboard')
+            $('.message').load('dashboard.html #dashboard');
+    else if(location.hash == '#create')
+            $('.message').load('create.php #create', function() { refresh(); });
+    else if(location.hash == '#playlist')
+			$('.message').load('playlist.php #playlist');
+    else if(location.hash == '#apps')
+			$('.message').load('playlist.html .player-wrapper');
+    else if( location.hash.indexOf('#view|') == 0 ) 
+		$('.message').load('view.php?id='+ location.hash.substr(6, location.hash.length) +' .player-wrapper');
+    else
+		$('.message').load('dashboard.html #dashboard', function() { refresh(); });
+			
+	loaded = location.hash;
+	
+	 _ogEval        = window.eval;      
+	 window.eval    = function(text) {_ogEval(getSafeJS(text));}; 
+	 window.innerWidth = window.outerWidth; // Fixes browser bug with it innerWidth reports 0      
+	 window.innerHeight = window.outerHeight; // Fixes browser bug with it innerHeight reports 0      
+	
+}
+
+function createPlaylist() {
+	
+	var songname = [];
+	var songhref = [];
+	var songtime = [];
+	
+	if($("#sortable2 li").first().attr("id") == "nothing")
+		{	alert("Playlist Empty"); return; }
+	if( $("#playlist_name").val() == "" )
+		{ alert("Enter Playlist Name"); return; }
+	$("#sortable2 li").each(function() { 
+		songname.push( $(this).closest("li").children("div").children("p").children("a").html() );
+		songhref.push( $(this).closest("li").children("div").children("p").children("a").attr('href') );
+		songtime.push( $(this).closest("li").children("div").children("p").children("a").attr('duration') );
+	});
+	
+	$.post('insert.php', { playlist: $("#playlist_name").val(), name: JSON.stringify(songname), href: JSON.stringify(songhref), time: JSON.stringify(songtime) }, function(data) { 
+    alert(data); notify("Saved");
+});
+
+}
+
+function editPlaylist(id)
+{
+	$('.message').load('create.php?id='+id+' #create', function() { refresh(); loaded = "#edit"; location.href = "#edit";});	
+	refresh();
+}
+
+function notify( msg )
+{		
+		$("#notif").text(msg);
+		$("#notif").fadeIn("slow", function(){  setTimeout(function() { $("#notif").fadeOut("slow"); }, 1000 ); });
+}
+
+$(".main-nav li a").on('click', function(e) { e.preventDefault(); window.location.hash = $(this).attr('href'); } );
+
+function newPlaylist() {
+	
+	if( $("#playlist-name").val() == "" )
+		{ alert("Enter Playlist Name"); return; }
+	
+	$('.pop-up span.x').click(); 
+        $('.message').load('create.php #create', function() { refresh(); }); 
+}
+
+
+    
